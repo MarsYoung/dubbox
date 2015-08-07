@@ -31,7 +31,8 @@
 	
 	<dubbo:application name="${dubbo.application.name}" owner="${dubbo.application.owner}" />
 	
-	<dubbo:registry address="${dubbo.registry.address}" />
+	<dubbo:registry address="${dubbo.registry.address}" file="${dubbo.registry.file}"
+        group="${dubbo.registry.group}"  />
 	
 	<dubbo:protocol name="dubbo" port="${dubbo.protocol.port}" />
 	

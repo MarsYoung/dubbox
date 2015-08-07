@@ -46,11 +46,11 @@ import org.jfree.chart.plot.XYPlot;
 import org.jfree.data.time.Minute;
 import org.jfree.data.time.TimeSeries;
 import org.jfree.data.time.TimeSeriesCollection;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.alibaba.dubbo.common.Constants;
 import com.alibaba.dubbo.common.URL;
-import com.alibaba.dubbo.common.logger.Logger;
-import com.alibaba.dubbo.common.logger.LoggerFactory;
 import com.alibaba.dubbo.common.utils.ConfigUtils;
 import com.alibaba.dubbo.common.utils.NamedThreadFactory;
 import com.alibaba.dubbo.common.utils.NetUtils;
@@ -97,6 +97,7 @@ public class SimpleMonitorService implements MonitorService {
     
     public void setStatisticsDirectory(String statistics) {
         if (statistics != null) {
+        	logger.info("数据统计目录为："+statistics);
             this.statisticsDirectory = statistics;
         }
     }
@@ -107,6 +108,7 @@ public class SimpleMonitorService implements MonitorService {
 
     public void setChartsDirectory(String charts) {
         if (charts != null) {
+        	logger.info("图表统计目录为："+charts);
             this.chartsDirectory = charts;
         }
     }
