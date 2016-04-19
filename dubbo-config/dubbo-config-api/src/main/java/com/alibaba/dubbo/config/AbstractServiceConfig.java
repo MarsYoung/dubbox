@@ -61,6 +61,9 @@ public abstract class AbstractServiceConfig extends AbstractInterfaceConfig {
 
     // 访问日志
     protected String               accesslog;
+    
+    // 访问日志
+    protected String               costtimelog;;
 
     // 允许执行请求数
     private Integer                executes;
@@ -179,7 +182,15 @@ public abstract class AbstractServiceConfig extends AbstractInterfaceConfig {
         this.accesslog = accesslog;
     }
     
-    public void setAccesslog(Boolean accesslog) {
+    public String getCosttimelog() {
+		return costtimelog;
+	}
+
+	public void setCosttimelog(String costtimelog) {
+		this.costtimelog = costtimelog;
+	}
+
+	public void setAccesslog(Boolean accesslog) {
         if (accesslog == null) {
             setAccesslog((String) null);
         } else {

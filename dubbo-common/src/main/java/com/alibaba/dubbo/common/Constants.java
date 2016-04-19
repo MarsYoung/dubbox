@@ -237,6 +237,8 @@ public class Constants {
     public static final String  EXPORTER_LISTENER_KEY              = "exporter.listener";
 
     public static final String  ACCESS_LOG_KEY                     = "accesslog";
+    
+    public static final String COST_TIME_LOG_KEY                   = "costtimelog";
 
     public static final String  ACTIVES_KEY                        = "actives";
 

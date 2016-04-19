@@ -97,7 +97,7 @@ public class SimpleMonitorService implements MonitorService {
     
     public void setStatisticsDirectory(String statistics) {
         if (statistics != null) {
-        	logger.info("数据统计目录为："+statistics);
+        	logger.info("数据收集目录为："+statistics);
             this.statisticsDirectory = statistics;
         }
     }
@@ -191,6 +191,9 @@ public class SimpleMonitorService implements MonitorService {
                 } else {
                     type = PROVIDER;
                     consumer = statistics.getParameter(CONSUMER);
+                    if(consumer==null){
+                    	throw new Exception("consumer is null");
+                    }
                     int i = consumer.indexOf(':');
                     if (i > 0) {
                         consumer = consumer.substring(0, i);
@@ -418,10 +421,15 @@ public class SimpleMonitorService implements MonitorService {
         }
     }
 
+
     public void count(URL statistics) {
         collect(statistics);
     }
 
+    /**
+     * 统计入口，所有的统计都是基于queue这个队列
+     * @param statistics
+     */
     public void collect(URL statistics) {
         queue.offer(statistics);
         if (logger.isInfoEnabled()) {

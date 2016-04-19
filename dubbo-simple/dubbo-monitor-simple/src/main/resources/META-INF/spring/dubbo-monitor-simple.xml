@@ -29,9 +29,9 @@
 		<property name="chartsDirectory" value="${dubbo.charts.directory}" />
 	</bean>
 	
-	<dubbo:application name="${dubbo.application.name}" owner="${dubbo.application.owner}" />
+	<dubbo:application name="${dubbo.application.name}" owner="${dubbo.application.owner}" organization="sohu"/>
 	
-	<dubbo:registry address="${dubbo.registry.address}" file="${dubbo.registry.file}"
+	<dubbo:registry protocol="zookeeper" address="${dubbo.registry.address}" file="${dubbo.registry.file}"
         group="${dubbo.registry.group}"  />
 	
 	<dubbo:protocol name="dubbo" port="${dubbo.protocol.port}" />
@@ -40,4 +40,5 @@
 	
 	<dubbo:reference id="registryService" interface="com.alibaba.dubbo.registry.RegistryService" />
 	
+	<dubbo:provider accesslog="true"/>
 </beans>

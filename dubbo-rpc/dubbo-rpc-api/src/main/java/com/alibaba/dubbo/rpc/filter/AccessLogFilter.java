@@ -188,17 +188,23 @@ public class AccessLogFilter implements Filter {
                 if (args != null && args.length > 0) {
                     sn.append(JSON.json(args));
                 }
+                long start = System.currentTimeMillis();
+                Result result = invoker.invoke(inv);
+                long elapsed = System.currentTimeMillis() - start;
+                sn.append("cost-time:"+elapsed +"ms" );
                 String msg = sn.toString();
                 if (ConfigUtils.isDefault(accesslog)) {
                     LoggerFactory.getLogger(ACCESS_LOG_KEY + "." + invoker.getInterface().getName()).info(msg);
                 } else {
                     log(accesslog, msg);
                 }
+                return result;
             }
         } catch (Throwable t) {
             logger.warn("Exception in AcessLogFilter of service(" + invoker + " -> " + inv + ")", t);
         }
         return invoker.invoke(inv);
+       
     }
 
 }
