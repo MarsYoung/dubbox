@@ -192,7 +192,7 @@ public class AccessLogFilter implements Filter {
                 Result result = invoker.invoke(inv);
                 long elapsed = System.currentTimeMillis() - start;
                 sn.append(",Cost-Time:"+elapsed+"ms");
-                sn.append(",Result:"+result.getValue()==null?null:result.getValue().toString());
+                sn.append(",Result:"+(result.getValue()==null?null:result.getValue().toString()));
                 String msg = sn.toString();
                 if (ConfigUtils.isDefault(accesslog)) {
                     LoggerFactory.getLogger(ACCESS_LOG_KEY + "." + invoker.getInterface().getName()).info(msg);
